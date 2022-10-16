@@ -1,0 +1,72 @@
+﻿@using BingoWebApp.Services.Interfaces
+@model IBingoGamePad
+
+@{
+}
+@using BingoWebApp.Helpers;
+
+<script src="@Url.Content("~/js/site.min.js")"></script>
+
+<div class="xTable light-border" style="width: 400px; height: 400px;padding:5px;">
+    @if (Model.IsGameWon)
+    {
+        @for (int i = 1; i <= Model.GamePadSize; i++)
+        {
+            <div class="xRow">
+            @for (int j = 1; j <= Model.GamePadSize; j++)
+            {
+                    @if (GamePadHelpers.IsWinnerLine(i, j, Model))
+                    {
+                        <div class="xCell">
+                            <div class="bingo-cell blink-bg"
+                                style="cursor:pointer;@GamePadHelpers.GetCellStyleWinnerBackgroundColor()">
+                                <a id="@i-@j-cell"
+                                    style="@GamePadHelpers.GetGamePadItemStyleExtension(i,j)"
+                                >
+                                    @Model.gamePadItems.Where(_=>_.Row == i && _.Col == j).Select(_=>_.Value).First()
+                                </a>
+                            </div>                            
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="xCell">
+                            <div class="bingo-cell"
+                                style="cursor:pointer;@GamePadHelpers.GetCellStyleBackgroundColor(i, j, Model)">
+                                <a id="@i-@j-cell"
+                                    style="@GamePadHelpers.GetGamePadItemStyleExtension(i,j)"
+                                >
+                                    @Model.gamePadItems.Where(_=>_.Row == i && _.Col == j).Select(_=>_.Value).First()
+                                </a>
+                            </div>
+                    
+
+                        </div>
+                    }
+                }
+            </div>
+        }
+    }
+    else
+    {
+        @for (int i = 1; i <= Model.GamePadSize; i++)
+        {
+            <div class="xRow">
+            @for (int j = 1; j <= Model.GamePadSize; j++)
+            {
+                <div class="xCell">
+                    <div class="bingo-cell"
+                        style="cursor:pointer;@GamePadHelpers.GetCellStyleBackgroundColor(i, j, Model)"
+                        onclick="jsOnBingoCellClick( { row: @i, col: @j, gameuid: '@Model.GamePadUID' } )">
+                        <a id="@i-@j-cell"
+                            style="@GamePadHelpers.GetGamePadItemStyleExtension(i,j)"
+                        >
+                            @Model.gamePadItems.Where(_=>_.Row == i && _.Col == j).Select(_=>_.Value).First()
+                        </a>
+                    </div>
+                </div>
+            }
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,246 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.xTable {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.xRow {
+    display: table-row;
+}
+
+.xCell {
+    display: table-cell;
+    border: none;
+    border-width: 0px;
+    padding-left: 1px;
+    padding-right: 1px;
+    word-break: break-all;
+    word-wrap: anywhere;
+}
+
+.xCell-Header {
+    display: table-cell;
+    border: none;
+    border-width: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    background-color: rgb(66,76,61);
+    color: white;
+    word-wrap: break-word;
+    vertical-align: middle;
+    font-weight: 600;
+}
+
+.full-docked {
+    height: 100%;
+    width: 100%;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.light-border {
+    border: solid lightgray 1px;
+    border-radius: 5px;
+}
+
+.logger-header {
+    font-size: large;
+    position: relative;
+    left: 10px;
+}
+
+.blue-button {
+    width: 140px;
+    height: 38px;
+    position: fixed;
+    background-color: #4894f79c;
+    border: 1px solid blue;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.green-button {
+    width: 140px;
+    height: 38px;
+    position: fixed;
+    background-color: #4cd261;
+    border: 1px solid #036a00eb;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+
+.winner-span {
+    border: 1px solid lightgray;
+    width: 400px;
+    display: inline-block;
+    border-radius: 4px;
+    height: 60px;
+    text-align: center;
+    padding-top: 7px;
+    color: #ff009b;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.tab-sheet-header {
+    border-bottom: 1px solid lightgray;
+    padding: 10px 10px 0px 3px;
+}
+
+.tab-sheet-button {
+    background-color: white;
+    text-align: center;
+    color: gray;
+    height: 30px;
+    vertical-align: middle;
+    border: 1px solid lightgray;
+    border-bottom-width: 0px;
+    margin-left: -3px;
+    margin-right: -3px;
+}
+
+.tab-sheet-button-active {
+    background-color: #1E70B9;
+    color: white;
+    border: 0px solid lightgray;
+    text-align: center;
+    height: 30px;
+    vertical-align: middle;
+    margin-left: -3px;
+    margin-right: -3px;
+}
+
+.tab-sheet-cell {
+    border: 1px solid lightgray;
+    height: 20px;
+    vertical-align: middle;
+    padding-left: 10px;
+    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.loader-background {
+    position: fixed;
+    background-color: #ffffff5e;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.bingo-cell {
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-top: 12px;
+    text-align: center;
+    border: 4px double #ec9e9ed1;
+    border-radius: 32px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+}
+
+.bingo-cell:active {
+    background-color: #dda660b3;
+}
+
+.beans-cell {
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    word-wrap: normal;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-block;
+    padding-top: 8px;
+    text-align:center;
+}
+
+.blink-bg {
+    color: #fff;
+    animation: blinkingBackground 2s infinite;
+}
+
+@keyframes blinkingBackground {
+    0% {
+        background-color: red;
+    }
+
+    25% {
+        background-color: deeppink;
+    }
+
+    50% {
+        background-color: purple;
+    }
+
+    75% {
+        background-color: orangered;
+    }
+
+    100% {
+        background-color: darkmagenta;
+    }
+}

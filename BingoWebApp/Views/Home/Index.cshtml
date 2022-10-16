@@ -1,0 +1,79 @@
+﻿@using BingoWebApp.Services.Interfaces
+@model IBingoGamePad
+
+@{
+    ViewData["Title"] = "Home Page";
+    ViewData["gamePadUID"] = Model != null ? Model.GamePadUID : string.Empty;
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+@using (Html.BeginForm("RefreshGamePad", "Home", FormMethod.Post, new { gamePadUID = ViewData["gamePadUID" ] }))
+{
+    @Html.Hidden("gamePadUID", ViewData["equipmentID"])
+    <div class="xTable">
+        <div class="xRow">
+            <div class="xCell" style="width: 150px;">
+                <input type="submit" 
+                    value="Create game"
+                    formaction="/Home/NewGame"
+                    class="blue-button"
+                    style="top: 75px;"/>
+                @if (Model != null && !Model.IsGameOver && !Model.IsGameWon)
+                {
+                    <input type="button"
+                        value="Next step"                        
+                        onclick="jsBingoNextStep( '@Model.GamePadUID' )"
+                        class="green-button"
+                        style="top: 484px;"/>
+                }
+            </div>
+            <div class="xCell">
+
+                <div class="xTable">
+
+                    <div class="xRow">
+                        <div class="xCell">
+                            @if (Model != null)
+                            {
+                                if (Model.IsGameOver)
+                                {
+                                    <span style="font-size:20px;">THE GAME IS OVER !</span>
+                                }
+                                else if (Model.IsGameWon)
+                                {
+                                    @await Html.PartialAsync("_GameBoardPartial", Model);
+                                    <span class="winner-span">BINGO! You are the winner!</span>
+                                }
+                                else
+                                {
+                                    @await Html.PartialAsync("_GameBoardPartial", Model)
+                                }
+                            }
+                        </div>
+                    </div>
+        
+                    <div class="xRow">
+                        <div class="xCell" style="height: 10px;">
+
+                        </div>
+                    </div>
+
+                    <div class="xRow">
+                        <div class="xCell">
+                            @if (Model != null)
+                            {
+                                @await Html.PartialAsync("_GameBeansSequencePartial", Model.BeansSequence)
+                            }
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+                <div class="xCell" style="width:10px;">
+            </div>
+        </div>
+
+    </div>
+}
